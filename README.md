@@ -45,7 +45,6 @@ A lightweight front-end framework that eliminates the need for traditional HTML 
 - Using Reactive State
     Bind a reactive state to an element:
     ```javascript
-    Salin kode
     import { create, mount, reactive } from 'htmless';
 
     const state = reactive('Click me');
