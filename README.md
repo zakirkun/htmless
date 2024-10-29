@@ -35,7 +35,7 @@ A lightweight front-end framework that eliminates the need for traditional HTML 
     To create and mount an element, use the following code:
 
     ```javascript
-    import { create, mount } from './your-library';
+    import { create, mount } from 'htmless';
 
     const app = create('div').setText('Hello, World!').class('app-container');
 
@@ -46,7 +46,7 @@ A lightweight front-end framework that eliminates the need for traditional HTML 
     Bind a reactive state to an element:
     ```javascript
     Salin kode
-    import { create, mount, reactive } from './your-library';
+    import { create, mount, reactive } from 'htmless';
 
     const state = reactive('Click me');
 
