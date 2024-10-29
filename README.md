@@ -77,9 +77,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-### Instructions
-
-- Replace `yourusername` and `htmless` with your actual GitHub username and the name of your library repository.
-- Add any additional sections that may be relevant to your library, such as advanced usage or integration with other libraries.
-- Customize the examples based on the specific methods and features of your library. 
