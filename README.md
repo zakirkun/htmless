@@ -35,7 +35,7 @@ A lightweight front-end framework that eliminates the need for traditional HTML 
     To create and mount an element, use the following code:
 
     ```javascript
-    import { create, mount } from './your-library';
+    import { create, mount } from 'htmless';
 
     const app = create('div').setText('Hello, World!').class('app-container');
 
@@ -45,8 +45,7 @@ A lightweight front-end framework that eliminates the need for traditional HTML 
 - Using Reactive State
     Bind a reactive state to an element:
     ```javascript
-    Salin kode
-    import { create, mount, reactive } from './your-library';
+    import { create, mount, reactive } from 'htmless';
 
     const state = reactive('Click me');
 
@@ -61,6 +60,52 @@ A lightweight front-end framework that eliminates the need for traditional HTML 
 
     // Mount the button
     mount(button);
+    ```
+- Full Example
+    ```javascript
+    import { create, mount, reactive } from "htmless";
+    import { state } from "state";
+
+    const todos = state<string[]>([]);
+    const todo = state<string>("");
+    const color = state<boolean>(false);
+
+    const updateTodo = () => {
+    const newTodo = todo.get();
+    if (newTodo.split(' ').length === 0 && newTodo.trim()) {
+        todos.update(current => [...current, newTodo.trim()]);
+    } else {
+        todos.update(current => [...current, ...newTodo.split(" ")])
+    }
+    todo.set('');
+    }
+
+    // Create an Element instance
+    mount(create("div").class('container').child(() => [
+    reactive(todos, () =>
+        create('ul').class('todo-list').child(() =>
+        todos.get().map((todoItem, index) =>
+            create('li')
+            .setText(todoItem)
+            .on('click', () => {
+                todos.update(current =>
+                current.filter((_, i) => i !== index)
+                );
+            })
+        )
+        )
+    ),
+    create('input').value(todo).on('keyup', (e: KeyboardEvent) => {
+        if (e.key === 'Enter') {
+        updateTodo();
+        }
+    }),
+    create('button')
+        .setText('Add Todo')
+        .class('btn')
+        .on('click', updateTodo),
+    create('h1').css('color', () => color.get()).setStyle({ color: 'red' }).setText("Wow")
+    ]));
     ```
 
 ## API
@@ -78,9 +123,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-### Instructions
-
-- Replace `yourusername` and `htmless` with your actual GitHub username and the name of your library repository.
-- Add any additional sections that may be relevant to your library, such as advanced usage or integration with other libraries.
-- Customize the examples based on the specific methods and features of your library. 
