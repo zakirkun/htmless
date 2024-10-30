@@ -1,7 +1,23 @@
 {
   "name": "htmless",
-  "private": true,
-  "version": "0.0.0",
+  "description": "A lightweight front-end framework that eliminates the need for traditional HTML templates or JSX. This library provides a seamless way to create and manage DOM elements using pure JavaScript functions, with built-in reactive state management for building interactive user interfaces.",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "frontend",
+    "htmx",
+    "tailwindcss"
+  ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "author": "zakirkun",
+  "license": "MIT",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,5 +30,8 @@
   },
   "dependencies": {
     "htmless": "file:"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

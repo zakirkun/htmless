@@ -161,6 +161,14 @@ class Element {
         Object.assign(this.element.style, this.props.style);
       }
     }
+
+    // Adds Tailwind utility classes and merges with existing ones
+    tailwind(...classNames: string[]): Element {
+        const existingClasses = this.props.className ? this.props.className.split(' ') : [];
+        const newClasses = classNames.filter(cn => !existingClasses.includes(cn));
+        this.props.className = [...existingClasses, ...newClasses].join(' ');
+        return this;
+    }
   
     render(): HTMLElement {
       const isFirstRender = !this.element;
